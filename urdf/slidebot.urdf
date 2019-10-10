@@ -5,11 +5,10 @@
      In this urdf, the universal joint is created using two continous joints
 -->
 
-<link name="base">
+<link name="base_link">
   <visual>
-    <origin xyz="0 0 0" rpy = "0 0 0" />
     <geometry>
-        <box size="2 3 1"/>
+    <box size="3 2 1" />
     </geometry>
   </visual>
 </link>

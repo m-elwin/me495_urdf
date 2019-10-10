@@ -13,6 +13,6 @@
   </node>
 
   <!-- rviz will enable us to see the robot -->
-  <node name="rviz" pkg="rviz" type="rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find me495_urdf)/rviz/view_robot.rviz"/>
 
 </launch>
