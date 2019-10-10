@@ -1,0 +1,17 @@
+<robot name="slidebot">
+<!-- slidebot is a robot that moves in the plane and has a 2-dof arm,
+     attached to the base with a universal joint.
+
+     In this urdf, the universal joint is created using two continous joints
+-->
+
+<link name="base">
+  <visual>
+    <origin xyz="0 0 0" rpy = "0 0 0" />
+    <geometry>
+        <box size="2 3 1"/>
+    </geometry>
+  </visual>
+</link>
+
+</robot>
