@@ -7,11 +7,7 @@ project(me495_urdf)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS
-  joint_state_publisher
-  robot_state_publisher
-  rviz
-)
+find_package(catkin REQUIRED COMPONENTS sensor_msgs)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -105,7 +101,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES me495_urdf
-#  CATKIN_DEPENDS joint_state_publisher robot_state_publisher rviz
+   CATKIN_DEPENDS sensor_msgs
 #  DEPENDS system_lib
 )
 
