@@ -1,6 +1,6 @@
 <launch>
   <!-- load the urdf into the parameter server -->
-  <param name="robot_description" textfile="$(find me495_urdf)/urdf/slidebot.urdf" />
+  <param name="robot_description" command="xacro $(find me495_urdf)/urdf/slidebot.urdf.xacro" />
 
   <!-- The robot_state_publisher reads the urdf from /robot_description parameter
        and listens to joint information on the /joint_states topic -->

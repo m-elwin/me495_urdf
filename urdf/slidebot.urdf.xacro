@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<robot name="slidebot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<!-- slidebot is a robot that has 1 linear and 1 rotational degree of freedom -->
+
+<!-- sphere radius -->
+<xacro:property name="srad" value="0.1" />
+
+<!-- box width, height, depth, and mass -->
+<xacro:property name="boxw" value="3" />
+<xacro:property name="boxh" value="2" />
+<xacro:property name="boxd" value="1" />
+<xacro:property name="boxm" value="5" />
+
+<!-- mass of the arm -->
+<xacro:property name="armm" value="2" />
+
+<!-- dummy link to make KDL happy since base link cannot have inertia -->
+<link name="base_link" />
+       
+
+<!-- The base from which the body slides -->
+<link name="base" >
+  <visual>
+    <geometry>
+      <sphere radius="${srad}" />
+     </geometry>
+     <material name="green_mat">
+         <color rgba="0 1 0 1" />
+     </material>
+   </visual>
+
+  <collision>
+    <geometry>
+      <sphere radius="${srad}" />
+     </geometry>
+  </collision>
+
+  <inertial>
+    <mass value="1"/>
+    <inertia ixx="${2.0/5.0*srad**2}" 
+             iyy="${2.0/5.0*srad**2}" 
+             izz="${2.0/5.0*srad**2}"
+             ixy="0"
+             ixz="0"
+             iyz="0" />
+  </inertial>
+</link>
+
+<!-- the movable body -->
+<link name="body">
+  <visual>
+    <geometry>
+    <box size="${boxw} ${boxh} ${boxd}" />
+    </geometry>
+     <material name="red_mat">
+         <color rgba="1 0 0 0.5" />
+     </material>
+  </visual>
+  <collision>
+    <geometry>
+    <box size="${boxw} ${boxh} ${boxd}" />
+    </geometry>
+  </collision>
+
+  <inertial>
+    <mass value="${boxm}" />
+    <inertia ixx="${1.0/12.0*boxm*(boxh**2 + boxd**2)}"
+             iyy="${1.0/12.0*boxm*(boxw**2 + boxh**2)}"
+             izz="${1.0/12.0*boxm*(boxh**2 + boxd**2)}"
+             ixy="0"
+             ixz="0"
+             iyz="0" />
+  </inertial>
+</link>
+
+<link name="arm">
+  <visual>
+  <origin xyz="0 0 0.5" rpy="0 0 0" />
+   <geometry>
+     <cylinder radius="${srad}" length="${boxd}" />
+   </geometry>
+     <material name="blue_mat">
+         <color rgba="0 0 1 1" />
+     </material>
+   </visual>
+  <collision>
+  <origin xyz="0 0 0.5" rpy="0 0 0" />
+   <geometry>
+     <cylinder radius="${srad}" length="${boxd}" />
+   </geometry>
+  </collision>
+  <inertial>
+    <origin xyz="0 0 0.5" rpy="0 0 0" />
+    <mass value="${armm}" />
+    <inertia ixx="${1.0/12.0*armm*(3.0*srad**2 +boxd**2)}"
+             iyy="${1.0/12.0*armm*(3.0*srad**2 +boxd**2)}"
+             izz="${1.0/2.0*armm*srad**2}"
+             ixy="0"
+             ixz="0"
+             iyz="0" />
+  </inertial>
+</link>
+
+<joint name="dummy_base" type="fixed">
+  <parent link="base_link" />
+  <child link="base" />
+</joint>
+
+<joint name="linear" type="prismatic">
+  <parent link="base" />
+  <child link="body" />
+  <limit lower="-10" upper="10" effort="100" velocity="100" />
+</joint>
+
+<joint name="rotational" type="continuous">
+  <origin xyz="1.5 0 0.5" rpy="0 0 0" />
+  <parent link="body" />
+  <child link="arm" />
+</joint>
+</robot>
+
