@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
-<robot name="slidebot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 <!-- slidebot is a robot that has 1 linear and 1 rotational degree of freedom -->
+
+<robot name="slidebot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find me495_urdf)/urdf/slidebot.gazebo.xacro"/>
+
 
 <!-- sphere radius -->
 <xacro:property name="srad" value="0.1" />
