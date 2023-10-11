@@ -1,0 +1,17 @@
+<launch>
+  <!-- The robot_state_publisher reads the urdf from /robot_description parameter
+       and listens to joint information on the /joint_states topic -->
+  <node pkg="robot_state_publisher" exec="robot_state_publisher">
+    <!-- load the urdf into the parameter server -->
+    <!-- A plain urdf file is also a valid xacro file so we use xacro here for convenience only -->
+    <param name="robot_description" value="$(command '$(exec-in-pkg xacro xacro) $(find-pkg-share me495_urdf)/slidebot.urdf')" />
+  </node>
+
+  <!-- The joint state publisher will be launched with a gui, read the urdf from /robot_description
+       and publish the joint values on /joint_states -->
+  <node pkg="joint_state_publisher_gui" exec="joint_state_publisher_gui"/>
+
+  <!-- rviz will enable us to see the robot -->
+  <node pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share me495_urdf)/view_robot.rviz"/>
+
+</launch>

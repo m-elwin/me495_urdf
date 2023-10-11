@@ -2,7 +2,7 @@
 <!-- slidebot is a robot that has 1 linear and 1 rotational degree of freedom -->
 
 <!-- The base from which the body slides -->
-<link name="base" >
+<link name="base_link" >
   <visual>
     <geometry>
       <sphere radius="0.1" />
@@ -39,7 +39,7 @@
 </link>
 
 <joint name="linear" type="prismatic">
-  <parent link="base" />
+  <parent link="base_link" />
   <child link="body" />
   <limit lower="-10" upper="10" effort="100" velocity="100" />
 </joint>
