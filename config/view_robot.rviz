@@ -7,6 +7,7 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
+        - /RobotModel1/Description Topic1
       Splitter Ratio: 0.5
     Tree Height: 749
   - Class: rviz_common/Selection
@@ -71,7 +72,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        base:
+        base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -96,7 +97,7 @@ Visualization Manager:
         All Enabled: true
         arm:
           Value: true
-        base:
+        base_link:
           Value: true
         body:
           Value: true
@@ -106,7 +107,7 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        base:
+        base_link:
           body:
             arm:
               {}
@@ -115,7 +116,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -158,7 +159,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 6.814720153808594
+      Distance: 7.307488441467285
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -194,5 +195,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 636
-  X: 1720
+  X: 2360
   Y: 319
