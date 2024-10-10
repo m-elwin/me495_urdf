@@ -1,11 +1,23 @@
 <launch>
+  <arg name="robot" default="slide" description="Which robot to show: slide or chained"/>
+
   <!-- The robot_state_publisher reads the urdf from /robot_description parameter
-       and listens to joint information on the /joint_states topic -->
-  <node pkg="robot_state_publisher" exec="robot_state_publisher">
+       and listens to joint information on the /joint_states topic.
+       This version is included if the robot specified is 'slide'
+  -->
+  <node pkg="robot_state_publisher" exec="robot_state_publisher" if="$(eval '\'$(var robot)\'==\'slide\'')">
     <!-- load the urdf into the parameter server -->
     <!-- A plain urdf file is also a valid xacro file so we use xacro here for convenience only -->
     <param name="robot_description" value="$(command '$(exec-in-pkg xacro xacro) $(find-pkg-share me495_urdf)/slidebot.urdf')" />
   </node>
+
+  <!-- This robot state publisher is included if the specified robot is not slide -->
+  <node pkg="robot_state_publisher" exec="robot_state_publisher" unless="$(eval '\'$(var robot)\'==\'slide\'')">
+    <!-- load the urdf into the parameter server -->
+    <!-- A plain urdf file is also a valid xacro file so we use xacro here for convenience only -->
+    <param name="robot_description" value="$(command '$(exec-in-pkg xacro xacro) $(find-pkg-share me495_urdf)/chained.urdf.xacro')" />
+  </node>
+
 
   <!-- The joint state publisher will be launched with a gui, read the urdf from /robot_description
        and publish the joint values on /joint_states -->

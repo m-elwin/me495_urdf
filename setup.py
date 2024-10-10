@@ -13,6 +13,8 @@ setup(
                                    'launch/see_robot.launch.xml',
                                    'launch/see_robot.launch.py',
                                    'urdf/slidebot.urdf',
+                                   'urdf/chained.urdf.xacro',
+                                   'urdf/chain_link.urdf.xacro',
                                    'config/view_robot.rviz']),
     ],
     install_requires=['setuptools'],

@@ -1,0 +1,19 @@
+<robot name="chained" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find me495_urdf)/chain_link.urdf.xacro" />
+  <xacro:property name="length" value="0.2" /><!-- The length of the first link-->
+
+  <link name="base_link">
+    <xacro:cylinder radius="0.1" length="${length}" />
+  </link>
+
+  <link name="link1">
+    <xacro:cylinder radius="0.2" length="0.3" />
+  </link>
+
+  <joint name="j01" type="continuous">
+    <origin xyz="0 0 ${2.0*length}"/>
+    <parent link="base_link" />
+    <child link="link1" />
+  </joint>
+
+</robot>
