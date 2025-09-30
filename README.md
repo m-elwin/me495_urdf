@@ -13,6 +13,7 @@ The package contains both an XML and python launchfile. Both of these launchfile
 you would not need to provide both copies: they are for demonstration purposes only.
 
 `see_robot.launch.xml` - Loads the urdf into `robot_state_publisher`, launches a `joint_state_publisher_gui`, and launches `rviz`
+
 `see_robot.launch.py` - Loads the urdf into `robot_state_publisher`, launches a `joint_state_publisher_gui`, and launches `rviz`
 
 Both launchfiles take a `robot` argument, allowing the user to view either the `slidebot.urdf` or the `chained.urdf.xacro`.
