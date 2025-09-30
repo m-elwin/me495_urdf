@@ -3,7 +3,9 @@ An example for making urdfs and visualizing them in rviz.
 
 ## URDF Files
 `urdf/slidebot.urdf` - A robot that has one prismatic and one rotation joint.
+
 `urdf/chain_link.urdf.xacro` - An example of a xacro "utility" file containing a macro to make a link
+
 `urdf/chained.urdf.xacro` - A xacro file that uses `chain_link.urdf.xacro` to demonstrate the use of xacro
 
 ## Launchfiles
