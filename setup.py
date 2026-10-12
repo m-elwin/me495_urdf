@@ -23,7 +23,11 @@ setup(
     maintainer_email='elwin@northwestern.edu',
     description='URDF examples from ME495',
     license='BSD',
-    tests_require=['pytest'],
+    extras_require={
+        'test': [
+            'pytest',
+            ],
+        },
     entry_points={
         'console_scripts': [
         ],
