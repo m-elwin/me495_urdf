@@ -11,6 +11,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml',
                                    'launch/see_robot.launch.xml',
+                                   'launch/see_robot_sugar.launch.xml',
                                    'launch/see_robot.launch.py',
                                    'urdf/slidebot.urdf',
                                    'urdf/chained.urdf.xacro',

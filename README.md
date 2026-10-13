@@ -16,4 +16,6 @@ you would not need to provide both copies: they are for demonstration purposes o
 
 `see_robot.launch.py` - Loads the urdf into `robot_state_publisher`, launches a `joint_state_publisher_gui`, and launches `rviz`
 
-Both launchfiles take a `robot` argument, allowing the user to view either the `slidebot.urdf` or the `chained.urdf.xacro`.
+`see_robot_sugar.launch.xml` - Same as the above, but uses some nicer/newer features of ROS 2 xml launch to make it cleaner.
+
+All launchfiles take a `robot` argument, allowing the user to view either the `slidebot.urdf` or the `chained.urdf.xacro`.
